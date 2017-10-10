@@ -19,14 +19,12 @@ import java.util.Optional;
 public class PizzaOrderService {
 
     private PizzaOrderRepository pizzaOrderRepository;
-    private io.pivotal.pccpizza.repository.gemfire.PizzaOrderRepository pizzaOrderGemfireRepository;
     private PizzaRepository pizzaRepository;
     private CustomerRepository customerRepository;
 
     @Autowired
-    public PizzaOrderService(PizzaOrderRepository pizzaOrderRepository, io.pivotal.pccpizza.repository.gemfire.PizzaOrderRepository pizzaOrderGemfireRepository, PizzaRepository pizzaRepository, CustomerRepository customerRepository) {
+    public PizzaOrderService(PizzaOrderRepository pizzaOrderRepository, PizzaRepository pizzaRepository, CustomerRepository customerRepository) {
         this.pizzaOrderRepository = pizzaOrderRepository;
-        this.pizzaOrderGemfireRepository = pizzaOrderGemfireRepository;
         this.pizzaRepository = pizzaRepository;
         this.customerRepository = customerRepository;
     }
@@ -51,7 +49,7 @@ public class PizzaOrderService {
 
     @CacheEvict(value = "PizzaOrder")
     public PizzaOrder completePizzaOrder(long pizzaOrderId){
-        PizzaOrder pizzaOrder = this.pizzaOrderGemfireRepository.findById(pizzaOrderId).orElseGet(()->this.getPizzaOrder(pizzaOrderId));
+        PizzaOrder pizzaOrder = this.pizzaOrderRepository.findById(pizzaOrderId).orElseGet(()->this.getPizzaOrder(pizzaOrderId));
         pizzaOrder.setOrderComplete(true);
         return this.pizzaOrderRepository.save(pizzaOrder);
     }
