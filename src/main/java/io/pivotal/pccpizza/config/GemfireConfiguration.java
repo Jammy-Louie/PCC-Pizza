@@ -1,7 +1,6 @@
 package io.pivotal.pccpizza.config;
 
 import io.pivotal.pccpizza.model.PizzaOrder;
-import org.apache.geode.cache.Region;
 import org.apache.geode.cache.client.ClientCache;
 import org.apache.geode.cache.client.ClientCacheFactory;
 import org.apache.geode.cache.client.ClientRegionShortcut;
@@ -14,14 +13,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.gemfire.cache.GemfireCacheManager;
 import org.springframework.data.gemfire.client.ClientRegionFactoryBean;
-import org.springframework.data.gemfire.listener.ContinuousQueryDefinition;
-import org.springframework.data.gemfire.listener.ContinuousQueryListener;
-import org.springframework.data.gemfire.listener.ContinuousQueryListenerContainer;
 import org.springframework.data.gemfire.repository.config.EnableGemfireRepositories;
 
 import java.net.URI;
-
-import static org.springframework.data.gemfire.util.CollectionUtils.asSet;
 
 @Profile("Default")
 @Configuration

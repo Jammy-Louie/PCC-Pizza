@@ -19,12 +19,14 @@ import java.util.Optional;
 public class PizzaOrderService {
 
     private PizzaOrderRepository pizzaOrderRepository;
+    private io.pivotal.pccpizza.repository.gemfire.PizzaOrderRepository pizzaOrderGemfireRepository;
     private PizzaRepository pizzaRepository;
     private CustomerRepository customerRepository;
 
     @Autowired
-    public PizzaOrderService(PizzaOrderRepository pizzaOrderRepository, PizzaRepository pizzaRepository, CustomerRepository customerRepository) {
+    public PizzaOrderService(PizzaOrderRepository pizzaOrderRepository, io.pivotal.pccpizza.repository.gemfire.PizzaOrderRepository pizzaOrderGemfireRepository, PizzaRepository pizzaRepository, CustomerRepository customerRepository) {
         this.pizzaOrderRepository = pizzaOrderRepository;
+        this.pizzaOrderGemfireRepository = pizzaOrderGemfireRepository;
         this.pizzaRepository = pizzaRepository;
         this.customerRepository = customerRepository;
     }
