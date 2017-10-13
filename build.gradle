@@ -35,12 +35,7 @@ repositories {
 dependencies {
 	compile("org.springframework.boot:spring-boot-starter-data-jpa:$springBootVersion")
 	compile("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
-	compile("org.springframework.data:spring-data-gemfire:$springDataGemfireVersion"){
-		exclude group: "io.pivotal.gemfire"
-	}
-	compile("io.pivotal.gemfire:geode-core:9.0.4")
-	compile("io.pivotal.gemfire:geode-cq:9.0.4")
-	compile("io.pivotal.gemfire:geode-wan:9.0.4")
+	compile("org.springframework.data:spring-data-gemfire:$springDataGemfireVersion")
 	compile("io.pivotal.spring.cloud:spring-cloud-gemfire-spring-connector:$springConnectorVersion")
 	compile("io.pivotal.spring.cloud:spring-cloud-gemfire-cloudfoundry-connector:$cloudConnectorVersion")
 	runtime("com.h2database:h2:$h2Version")

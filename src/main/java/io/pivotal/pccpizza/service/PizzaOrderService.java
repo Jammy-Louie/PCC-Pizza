@@ -41,7 +41,7 @@ public class PizzaOrderService {
         return this.pizzaOrderRepository.findById(pizzaOrderId).orElse(null);
     }
 
-    @CachePut(value = "PizzaOrder")
+    @CachePut(value = "PizzaOrder", key = "#result.id")
     public PizzaOrder createOrder (long customerId, long pizzaId){
         Customer customer = this.customerRepository.findById(customerId).orElse(null);
         Pizza pizza = this.pizzaRepository.findById(pizzaId).get();
